@@ -2,15 +2,18 @@
   <v-app>
     <v-container class="mt-16">
       <v-row>
-        <v-col>
-          <v-img
+        <v-col >
+          <v-img cols="6" 
             :src="this.detallePelicula.poster"
             max-height="600"
             max-width="400"
+          
+            
             
           ></v-img>
+          
         </v-col>
-        <v-col>
+        <v-col cols="text justify-center">
           <h1>{{ this.detallePelicula.titulo }}</h1>
           <br />
 

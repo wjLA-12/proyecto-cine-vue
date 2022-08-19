@@ -43,8 +43,8 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="grey lighten-2" to="/login" @click="registrar()"
-                >Acceder</v-btn
+              <v-btn color="grey lighten-2" to="/login" @click="agregar()"
+                >Registrar</v-btn
               >
             </v-card-actions>
           </v-card>
@@ -67,12 +67,18 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "PageRegistro",
 
   data: () => ({
     checkbox: null,
-    registro: [],
+    registro: {
+      nombre:"",
+      apellidos:"",
+      email:"",
+      password:""
+    },
   }),
 
   methods: {
@@ -87,6 +93,19 @@ export default {
 
       this.$refs.observer.reset();
     },
+    agregar(){
+      axios
+      .post("http://localhost:4500/api/persona", this.registro)
+      .then((response)=>{
+        response.data=this.registro
+        console.log(response)
+    
+      })
+      .catch((error) => {
+          console.log(error);
+        });
+
+    }
   },
 };
 </script>
